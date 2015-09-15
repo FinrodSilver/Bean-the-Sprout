@@ -14,9 +14,15 @@
     <sound>sound\snd_beanJump</sound>
     <sound>sound\snd_beanShoot</sound>
     <sound>sound\snd_beanLeafHit</sound>
-    <sound>sound\snd_walkingBeanGlide</sound>
+    <sound>sound\snd_gameOver</sound>
+    <sound>sound\snd_youWin</sound>
   </sounds>
   <sprites name="sprites">
+    <sprites name="Health UI">
+      <sprite>sprites\spr_healthBarBG</sprite>
+      <sprite>sprites\spr_healthBarInner</sprite>
+      <sprite>sprites\spr_healthBarBorder</sprite>
+    </sprites>
     <sprites name="Ant Minions">
       <sprite>sprites\spr_antMinion1_left</sprite>
       <sprite>sprites\spr_antMinion1_right</sprite>
@@ -32,26 +38,34 @@
     </sprites>
     <sprites name="Bean Sprout">
       <sprite>sprites\spr_leafBullet</sprite>
-      <sprite>sprites\spr_beanGlideLeft</sprite>
-      <sprite>sprites\spr_beanGlideRight</sprite>
-      <sprite>sprites\spr_beanIdleRight</sprite>
-      <sprite>sprites\spr_beanIdleLeft</sprite>
-      <sprite>sprites\spr_beanJumpRight</sprite>
-      <sprite>sprites\spr_beanJumpLeft</sprite>
-      <sprite>sprites\spr_beanRunRight</sprite>
-      <sprite>sprites\spr_beanRunLeft</sprite>
-      <sprite>sprites\spr_bean2IdleRight</sprite>
-      <sprite>sprites\spr_bean2IdleLeft</sprite>
-      <sprite>sprites\spr_bean2JumpLeft</sprite>
-      <sprite>sprites\spr_bean2JumpRight</sprite>
-      <sprite>sprites\spr_bean2WalkRight</sprite>
-      <sprite>sprites\spr_bean2WalkLeft</sprite>
-      <sprite>sprites\spr_beanAttackLeft</sprite>
-      <sprite>sprites\spr_beanAttackRight</sprite>
-      <sprite>sprites\spr_smokeLeft</sprite>
-      <sprite>sprites\spr_smokeRight</sprite>
-      <sprite>sprites\spr_windblastLeft</sprite>
-      <sprite>sprites\spr_windblastRight</sprite>
+      <sprites name="Bean Final Form">
+        <sprite>sprites\spr_beanIdleLeft</sprite>
+        <sprite>sprites\spr_beanIdleRight</sprite>
+        <sprite>sprites\spr_beanJumpRight</sprite>
+        <sprite>sprites\spr_beanJumpLeft</sprite>
+        <sprite>sprites\spr_beanRunRight</sprite>
+        <sprite>sprites\spr_beanRunLeft</sprite>
+        <sprite>sprites\spr_beanAttackLeft</sprite>
+        <sprite>sprites\spr_beanAttackRight</sprite>
+      </sprites>
+      <sprites name="Bean 2nd Form">
+        <sprite>sprites\spr_bean2IdleRight</sprite>
+        <sprite>sprites\spr_bean2IdleLeft</sprite>
+        <sprite>sprites\spr_bean2JumpLeft</sprite>
+        <sprite>sprites\spr_bean2JumpRight</sprite>
+        <sprite>sprites\spr_bean2WalkRight</sprite>
+        <sprite>sprites\spr_bean2WalkLeft</sprite>
+      </sprites>
+      <sprites name="Bean 3rd Form">
+        <sprite>sprites\spr_bean3DuckLeft</sprite>
+        <sprite>sprites\spr_bean3DuckRight</sprite>
+        <sprite>sprites\spr_bean3JumpRight</sprite>
+        <sprite>sprites\spr_bean3JumpLeft</sprite>
+        <sprite>sprites\spr_bean3IdleLeft</sprite>
+        <sprite>sprites\spr_bean3IdleRight</sprite>
+        <sprite>sprites\spr_bean3WalkRight</sprite>
+        <sprite>sprites\spr_bean3WalkLeft</sprite>
+      </sprites>
     </sprites>
     <sprites name="Worms">
       <sprite>sprites\spr_largeWormDown</sprite>
@@ -96,17 +110,26 @@
       <sprite>sprites\spr_ground22</sprite>
       <sprite>sprites\spr_ground24</sprite>
     </sprites>
-    <sprites name="MenuButtons">
+    <sprites name="Buttons">
       <sprite>sprites\spr_startGame</sprite>
       <sprite>sprites\spr_endGame</sprite>
+      <sprite>sprites\spr_helpGame</sprite>
+      <sprite>sprites\spr_youWin</sprite>
+      <sprite>sprites\spr_gameOver</sprite>
+      <sprite>sprites\spr_continueClick</sprite>
+      <sprite>sprites\spr_Title</sprite>
     </sprites>
-    <sprite>sprites\spr_invis</sprite>
+    <sprite>sprites\spr_finish</sprite>
     <sprite>sprites\spr_monsterStop</sprite>
+    <sprite>sprites\spr_invis</sprite>
+    <sprite>sprites\spr_floor</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_mainMenu</background>
     <background>background\bg_groundTiles</background>
     <background>background\bg_clouds_sky</background>
+    <background>background\bck_dirt</background>
+    <background>background\bg_helpScreen</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -116,20 +139,17 @@
   <objects name="objects">
     <objects name="Ant Minions">
       <object>objects\obj_small_swarm</object>
+      <object>objects\obj_large_swarm</object>
       <object>objects\obj_antMinion1</object>
       <object>objects\obj_antMinion2</object>
       <object>objects\obj_antQueen</object>
-      <object>objects\obj_antSwarm</object>
       <object>objects\obj_minion1_nofall</object>
+      <object>objects\obj_minion</object>
     </objects>
     <objects name="Pick Ups">
       <object>objects\obj_healthUp</object>
       <object>objects\obj_powerUp</object>
-      <object>objects\obj_powerUp1</object>
-    </objects>
-    <objects name="Worms">
-      <object>objects\obj_smallWorm</object>
-      <object>objects\obj_largeWorm</object>
+      <object>objects\obj_extraLife</object>
     </objects>
     <objects name="Boulders">
       <object>objects\obj_boulder1</object>
@@ -141,6 +161,8 @@
       <object>objects\obj_bean</object>
       <object>objects\obj_leafBullet</object>
       <object>objects\obj_bean2nd</object>
+      <object>objects\obj_beanMain</object>
+      <object>objects\obj_bean3rd</object>
     </objects>
     <objects name="Tiles">
       <object>objects\obj_ground1</object>
@@ -170,23 +192,41 @@
       <object>objects\obj_ground24</object>
       <object>objects\obj_stone</object>
       <object>objects\obj_monsterStop</object>
+      <object>objects\obj_floor</object>
     </objects>
     <objects name="Controls">
-      <object>objects\obj_mainMenu_Control</object>
-      <object>objects\obj_room_sound_controller</object>
+      <object>objects\obj_mainMenu_controller</object>
+      <object>objects\obj_roomFade</object>
+      <object>objects\obj_mainMenuFade</object>
+      <object>objects\obj_roomController1</object>
+      <object>objects\obj_roomController2</object>
+      <object>objects\obj_roomController3</object>
+      <object>objects\obj_roomController4</object>
+      <object>objects\obj_roomController5</object>
+      <object>objects\obj_roomControlLight</object>
+      <object>objects\obj_clickHere</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_startGame</object>
       <object>objects\obj_endGame</object>
+      <object>objects\obj_helpButton</object>
+      <object>objects\obj_gameOver</object>
+      <object>objects\obj_youWin</object>
+      <object>objects\obj_title</object>
     </objects>
+    <object>objects\obj_finish</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_initizalizeGlobal</room>
     <room>rooms\rm_mainMenu</room>
     <room>rooms\rm_levelOne</room>
     <room>rooms\rm_levelTwo</room>
     <room>rooms\rm_levelThree</room>
     <room>rooms\rm_levelFour</room>
     <room>rooms\rm_levelFive</room>
+    <room>rooms\rm_gameOver</room>
+    <room>rooms\rm_youWin</room>
+    <room>rooms\rm_helpMenu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

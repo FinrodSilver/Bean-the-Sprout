@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_minion</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -32,7 +32,61 @@ grav = 0.75;
 dir = -1;
 movespeed = 2;
 fearofheights = false;
+//knockback = false;
+antHealth = 30;
+cantHit = false;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Knockback movement
+//image_blend = -1;
+//cantHit = false;
+//knockback = false;
+//movespeed = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Flashing Hit
+image_blend = -1; //Resets the value of image_blend to default
 </string>
           </argument>
         </arguments>
@@ -68,22 +122,25 @@ if(place_meeting(x + hsp, y, obj_ground1)){
     while(!place_meeting( x + sign(hsp), y, obj_ground1)) x += sign(hsp);
     hsp=0;
     dir *= -1;
+ //   if (knockback == false) {
     if(dir == 1) sprite_index = spr_antMinion1_right;
     else sprite_index = spr_antMinion1_left;
-}
+    }
+//}
 
 // Horizontal Collision for monsterStop Object
 if (place_meeting(x + hsp, y, obj_monsterStop)) {
     dir *= -1;
+//    if (knockback == false) {
     if(dir == 1) sprite_index = spr_antMinion1_right;
     else sprite_index = spr_antMinion1_left;
-}
+    }
+//}
 
 
 //Vertical Collisions
 if(place_meeting(x, y + vsp, obj_ground1)){
     while(!place_meeting(x, y + sign(vsp), obj_ground1)) y += sign(vsp);
-    //if(sign(vsp) == 1){ grounded = true; }
     vsp = 0;
     
     if((fearofheights) &amp;&amp; (!position_meeting( x + (sprite_width /2 ) * dir, y + (sprite_height / 2) + 8, obj_ground1))){
@@ -93,20 +150,80 @@ if(place_meeting(x, y + vsp, obj_ground1)){
     }
 }
 
-//Minion Collision
-if(place_meeting(x, y, obj_bean)){
-    if(obj_bean.y &lt; y - 16){ // jump on top of the ant
+//Minion Collision with Bean
+if(place_meeting(x, y, obj_beanMain)){
+    if(obj_beanMain.y &lt; y - 16){ // jump on top of the ant
+        effect_create_above(ef_explosion, x, y, 1, c_green);
         instance_destroy();
+        score += 10;
     } else {
-        audio_play_sound(snd_beanHit, 0, 0); 
+        if obj_beanMain.alarm[0] &lt; 0 //Then check if the alarm isn't already counting down (when an alarm is off, it's value is -1)
+        {
+            audio_play_sound(snd_antBite, 0, 0);
+            health -= 10;
+            obj_beanMain.image_blend = c_red; //Then give this object a different blended color
+            obj_beanMain.alarm[0] = 150; //And set the alarm to trigger after one second.
+        }
+ //       knockback = true;
+ //       movespeed = -15; // knockback effect, set speed in reverse
+ //       alarm[1] = 5;   // set the alarm
+        
+ //       x += hsp;
     }
 }
+
+
 
 //Finalize Horizontal
 x += hsp;
 
 //Finalize Vertical
 y += vsp;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_leafBullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Bullet hits minion
+
+if (antHealth &gt; 1) {
+audio_play_sound(snd_beanLeafHit, 0, 0);
+//canthit = true;
+antHealth -= 10;
+//knockback = true;
+//if (dir == -1) {
+//    movespeed = -15;
+//} else {
+//    movespeed = 15;
+//}
+//image_blend = c_silver;
+//alarm[1] = 5;
+
+x += hsp;
+
+ } else if (antHealth &lt;= 0) {
+    score += 10;
+    instance_destroy();
+    effect_create_above(ef_explosion,x,y,1,c_green);
+}
+
 </string>
           </argument>
         </arguments>

@@ -3,9 +3,9 @@
   <spriteName>spr_bean2IdleRight</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
-  <parentName>obj_bean</parentName>
+  <depth>-100</depth>
+  <persistent>-1</persistent>
+  <parentName>obj_beanMain</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,13 +27,65 @@
             <kind>1</kind>
             <string>/// Initialize Variables
 
-grav = 0.4;   // gravity
+grav = 0.8;   // gravity
 hsp = 0;      // hspeed
 vsp = 0;      // vspeed
-jumpSpeed = 5;  // Jump speed for 2nd Form
-moveSpeed = 3; // Movement speed for 2nd Form can be changed
+jumpSpeed = 12;  // Jump speed for final form
+moveSpeed = 4; // Movement speed for final form can be changed
+
+
+
 
 camface = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>game_restart();
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Sprite Flash
+image_blend = -1; //Resets the value of image_blend to default
 </string>
           </argument>
         </arguments>
@@ -62,34 +114,44 @@ camface = 0;
 key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
 key_jump = keyboard_check_pressed(vk_space);
-image_speed = 0.07;
+image_speed = 0.1;
+isLeft = keyboard_check_pressed(vk_left);
+isRight = keyboard_check_pressed(vk_right); 
 
 // React to the input
 move = key_left + key_right;    // == 0, -1, or +1
 hsp = move * moveSpeed;   // Speed set in variable
 
 // Facing Left/Right/Idle/jump
-if (move == -1 &amp;&amp; hsp == 0) {
-     sprite_index = spr_bean2IdleLeft;
-     } 
-if  (move == 0 &amp;&amp; hsp == 0) {
-    sprite_index = spr_bean2IdleRight;
+if (isLeft == 1 ) || (sprite_index == spr_bean2WalkLeft)
+    ||  (sprite_index == spr_bean2JumpLeft) {
+    sprite_index = spr_bean2IdleLeft;
+    if (hsp &lt; 0) {
+    sprite_index = spr_bean2WalkLeft; 
     }
-if (move == 1 &amp;&amp; hsp &gt; 0) {
-    sprite_index = spr_bean2WalkRight;
-    }
-if (move == -1 &amp;&amp; hsp &lt; 0) {
-    sprite_index = spr_bean2WalkLeft;
-    }
-if (move == -1 &amp;&amp; vsp &lt; 0) {
-     sprite_index = spr_bean2JumpLeft;
-     }
-if (move == 1 &amp;&amp; vsp &lt; 0) {
-     sprite_index = spr_bean2JumpRight;
-     }
-if (move == 0 &amp;&amp; vsp &lt; 0) {
-     sprite_index = spr_bean2JumpRight;
-     }
+    if (vsp &lt; 0)  {
+   sprite_index = spr_bean2JumpLeft;
+   }
+}
+
+if  (isRight == 1) || (sprite_index == spr_bean2WalkRight) 
+    || (sprite_index == spr_bean2JumpRight) {
+   sprite_index = spr_bean2IdleRight; 
+   if (hsp &gt; 0) {
+   sprite_index = spr_bean2WalkRight;  
+  } 
+   if (vsp &lt; 0) {
+   sprite_index = spr_bean2JumpRight;
+   }
+}
+
+if (key_jump == 1) &amp;&amp; (sprite_index == spr_bean2IdleRight) {
+    sprite_index = spr_bean2JumpRight;
+}
+if (key_jump == 1) &amp;&amp; (sprite_index == spr_beanIdleLeft) {
+    sprite_index = spr_bean2JumpLeft;
+}
+
 
 if (vsp &lt; 10) vsp += grav;  // Gravity
 
@@ -107,9 +169,60 @@ if (key_jump == true) {  // play jump sound
 // Call Collision Script
 scr_move(hsp, vsp);
 
+// Call boulder Script
+scr_push();
 
-//Smart Cam
-view_xview[0] += ((x - (view_xview[0]/2) - view_xview[0]) + camface) * 0.05;
+// Collision with Ant Minion
+if place_meeting(x + hsp,y,obj_minion) {
+        hsp -= 5;
+    }
+
+// Bean Death
+if (health &lt;= 0) &amp;&amp; (lives &lt;= 0) {
+    audio_play_sound(snd_beanDie, 1, 0);
+    instance_destroy();
+    room_goto(rm_gameOver);
+} else if (health &lt;= 0) {
+    audio_play_sound(snd_beanDie, 1, 0);
+    instance_destroy();
+    instance_create(global.targetBefore_x, global.targetBefore_y, obj_bean3rd);
+    lives -= 1;
+    health = 100;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_floor">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Bean Dies
+audio_play_sound(snd_beanDie, 1, 0);
+if lives &lt;= 0 {
+    instance_destroy();
+    room_goto(rm_gameOver);
+} else {
+    instance_destroy();
+    instance_create(global.targetBefore_x, global.targetBefore_y, obj_bean3rd);
+    lives -= 1;
+    health = 100;
+}
 </string>
           </argument>
         </arguments>

@@ -1,6 +1,6 @@
 /// Script for movement of the boudlers by Bean
 
-//Horizontal push Boulder1 - 4
+//Horizontal push Boulder1 - 4 Bean moving boulders
 
 if (place_meeting(x+hsp, y, obj_boulder1)) {
     var boulder = instance_place(x+hsp, y, obj_boulder1);
@@ -10,7 +10,7 @@ if (place_meeting(x+hsp, y, obj_boulder1)) {
         } else {
         image_speed = .4;
         }
-        scr_move(obj_bean.hsp/2, 0);
+        scr_move(obj_beanMain.hsp/2, 0);
         
     }
     
@@ -26,7 +26,7 @@ if (place_meeting(x+hsp, y, obj_boulder2)) {
         } else {
         image_speed = .4;
         }
-        scr_move(obj_bean.hsp/2, 0);
+        scr_move(obj_beanMain.hsp/2, 0);
         
     }
     
@@ -42,7 +42,7 @@ if (place_meeting(x+hsp, y, obj_boulder3)) {
         } else {
         image_speed = .4;
         }
-        scr_move(obj_bean.hsp/2, 0);
+        scr_move(obj_beanMain.hsp/2, 0);
         
     }
     
@@ -58,11 +58,9 @@ if (place_meeting(x+hsp, y, obj_boulder4)) {
         } else {
         image_speed = .4;
         }
-        scr_move(obj_bean.hsp/2, 0);
+        scr_move(obj_beanMain.hsp/2, 0);
         
     }
     
     hsp /= 2;
 }
-
-
