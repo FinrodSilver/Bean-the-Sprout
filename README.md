@@ -33,4 +33,20 @@ Added code for pushing boulders
 Tied Music with room transitions
 Added Walking and Push scripts to streamline movement
 
+0.7
+Cleaned-up sounds
+added beans 3rd form
+Added code for Bean shooting
+Tied Music with actions
+Cleanedup transitions
+Added new Main Menu signs.
+Added Power-ups
+Added Health repelnishers
+
+.9
+Code Complete / Levels Complete / Currently in Beat
+
+1.0
+Beta Form Testing
+
 
