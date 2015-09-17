@@ -32,7 +32,7 @@ grav = 0.75;
 dir = 1;
 movespeed = 2;
 fearofheights = false;
-//knockback = false;
+knockback = false;
 antHealth = 60;
 
 </string>
@@ -58,8 +58,8 @@ antHealth = 60;
           <argument>
             <kind>1</kind>
             <string>/// Knockback movement
-//knockback = false;
-//movespeed = 2;
+knockback = false;
+movespeed = 2;
 </string>
           </argument>
         </arguments>
@@ -119,20 +119,20 @@ if(place_meeting(x + hsp, y, obj_ground1)){
     while(!place_meeting( x + sign(hsp), y, obj_ground1)) x += sign(hsp);
     hsp=0;
     dir *= -1;
-//    if (knockback == false) {
+    if (knockback == false) {
     if(dir == 1) sprite_index = spr_antMinion2_right;
     else sprite_index = spr_antMinion2_left;
     }
-//}
+}
 
 // Horizontal Collision for monsterStop Object
 if (place_meeting(x + hsp, y, obj_monsterStop)) {
     dir *= -1;
-//    if (knockback == false) {
+    if (knockback == false) {
     if(dir == 1) sprite_index = spr_antMinion2_right;
     else sprite_index = spr_antMinion2_left;
     }
-//}
+}
 
 
 //Vertical Collisions
@@ -154,18 +154,18 @@ if(place_meeting(x, y, obj_beanMain)){
         instance_destroy();
         score += 20;
     } else {
+        audio_play_sound(snd_antBite, 0, 0);
         if obj_beanMain.alarm[0] &lt; 0 //Then check if the alarm isn't already counting down (when an alarm is off, it's value is -1)
         {
-        audio_play_sound(snd_antBite, 0, 0);
         health -= 20;
         obj_beanMain.image_blend = c_red; //Then give this object a different blended color
-        obj_beanMain.alarm[0] = 150; //And set the alarm to trigger after one second.
+        obj_beanMain.alarm[0] = room_speed; //And set the alarm to trigger after one second.
         }
- //       knockback = true;
-//        movespeed = -15; // knockback effect, set speed in reverse
- //       alarm[1] = 5;   // set the alarm
+        knockback = true;
+        movespeed = -15; // knockback effect, set speed in reverse
+        alarm[1] = 5;   // set the alarm
         
- //       x += hsp;
+        x += hsp;
     }
 }
 
@@ -202,11 +202,11 @@ y += vsp;
 
 if (antHealth &gt; 0) {
 antHealth -= 10;
-//knockback = true;
-//movespeed = -15;
-//alarm[1] = 5;
+knockback = true;
+movespeed = -15;
+alarm[1] = 5;
 
-//x += hsp;
+x += hsp;
 
  } else {
     score += 20;

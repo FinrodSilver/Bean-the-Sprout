@@ -32,7 +32,7 @@ grav = 0.75;
 dir = 1;
 movespeed = 2;
 fearofheights = false;
-//knockback = false;
+knockback = false;
 antHealth = 500;
 </string>
           </argument>
@@ -57,8 +57,8 @@ antHealth = 500;
           <argument>
             <kind>1</kind>
             <string>/// Knockback movement
-//knockback = false;
-//movespeed = 2;
+knockback = false;
+movespeed = 2;
 </string>
           </argument>
         </arguments>
@@ -129,6 +129,7 @@ if (place_meeting(x + hsp, y, obj_monsterStop)) {
 //Vertical Collisions
 if(place_meeting(x, y + vsp, obj_ground1)){
     while(!place_meeting(x, y + sign(vsp), obj_ground1)) y += sign(vsp);
+    //if(sign(vsp) == 1){ grounded = true; }
     vsp = 0;
     
     if((fearofheights) &amp;&amp; (!position_meeting( x + (sprite_width /2 ) * dir, y + (sprite_height / 2) + 8, obj_ground1))){
@@ -143,19 +144,18 @@ if(place_meeting(x, y, obj_beanMain)){
         antHealth -= 20 ;
         health -= 10;
     } else {
-        
+        audio_play_sound(snd_antBite, 0, 0);
         if obj_beanMain.alarm[0] &lt; 0 //Then check if the alarm isn't already counting down (when an alarm is off, it's value is -1)
         {
-        audio_play_sound(snd_antBite, 0, 0);
         health -= 30;
         obj_beanMain.image_blend = c_red; //Then give this object a different blended color
-        obj_beanMain.alarm[0] = 150; //And set the alarm to trigger after one second.
+        obj_beanMain.alarm[0] = room_speed; //And set the alarm to trigger after one second.
         }
-//        knockback = true;
-//        movespeed = -15; // knockback effect, set speed in reverse
-//        alarm[1] = 5;   // set the alarm
+        knockback = true;
+        movespeed = -15; // knockback effect, set speed in reverse
+        alarm[1] = 5;   // set the alarm
         
-//        x += hsp;
+        x += hsp;
     }
 }
 
@@ -202,16 +202,16 @@ y += vsp;
 if (antHealth &gt; 1) {
 audio_play_sound(snd_beanLeafHit, 0, 0);
 score += 50;
-//knockback = true;
-//if (dir == -1) {
-//    movespeed = -15;
-//} else {
-//    movespeed = 15;
-//}
-//image_blend = c_silver;
-//alarm[1] = 5;
+knockback = true;
+if (dir == -1) {
+    movespeed = -15;
+} else {
+    movespeed = 15;
+}
+image_blend = c_silver;
+alarm[1] = 5;
 
-//x += hsp;
+x += hsp;
 
  } else if (antHealth &lt;= 0) {
     score += 5000;

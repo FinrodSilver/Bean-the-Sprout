@@ -110,19 +110,19 @@
       <sprite>sprites\spr_ground22</sprite>
       <sprite>sprites\spr_ground24</sprite>
     </sprites>
-    <sprites name="Buttons">
+    <sprites name="MenuButtons">
       <sprite>sprites\spr_startGame</sprite>
       <sprite>sprites\spr_endGame</sprite>
       <sprite>sprites\spr_helpGame</sprite>
-      <sprite>sprites\spr_youWin</sprite>
-      <sprite>sprites\spr_gameOver</sprite>
-      <sprite>sprites\spr_continueClick</sprite>
-      <sprite>sprites\spr_Title</sprite>
     </sprites>
     <sprite>sprites\spr_finish</sprite>
     <sprite>sprites\spr_monsterStop</sprite>
     <sprite>sprites\spr_invis</sprite>
     <sprite>sprites\spr_floor</sprite>
+    <sprite>sprites\spr_gameOver</sprite>
+    <sprite>sprites\spr_continueClick</sprite>
+    <sprite>sprites\spr_youWin</sprite>
+    <sprite>sprites\spr_Title</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_mainMenu</background>
