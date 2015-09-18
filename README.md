@@ -3,59 +3,59 @@ Game Maker Game for final project at SNHU Masters Class
 
 #Change Log
 V0.1:
-Initial Design and prototype phase 
+Initial Design and prototype phase<br/>
 
 V 0.2:
-Added all Sprites
-Added All Objects
-Added All Backgrounds
+Added all Sprites<br/>
+Added All Objects<br/>
+Added All Backgrounds<br/>
 
 V0.3:
-Added Rooms and Design Levels
+Added Rooms and Design Levels<br/>
 
 V 0.4:
-Added Movement/AI for Ants
-Added Movement for Bean
-Deployed Main Menu
+Added Movement/AI for Ants<br/>
+Added Movement for Bean<br/>
+Deployed Main Menu<br/>
 
 
 V 0.5:
-Added movement for Bean
-Added collision with boulders
-Added Game Buttons for Main Menu
-Added Sounds for Main Menu and Ambient Sounds
+Added movement for Bean<br/>
+Added collision with boulders<br/>
+Added Game Buttons for Main Menu<br/>
+Added Sounds for Main Menu and Ambient Sounds<br/>
 
 V 0.6
-Added sounds
-Added new sprites for the ant minions
-Completed Minion Walking
-Added code for pushing boulders
-Tied Music with room transitions
-Added Walking and Push scripts to streamline movement
+Added sounds<br/>
+Added new sprites for the ant minions<br/>
+Completed Minion Walking<br/>
+Added code for pushing boulders<br/>
+Tied Music with room transitions<br/>
+Added Walking and Push scripts to streamline movement<br/>
 
 V 0.7
-Cleaned-up sounds
-added beans 3rd form
-Added code for Bean shooting
-Tied Music with actions
-Cleanedup transitions
-Added new Main Menu signs.
-Added Power-ups
-Added Health repelnishers
+Cleaned-up sounds<br/>
+added beans 3rd form<br/>
+Added code for Bean shooting<br/>
+Tied Music with actions<br/>
+Cleanedup transitions<br/>
+Added new Main Menu signs.<br/>
+Added Power-ups<br/>
+Added Health repelnishers<br/>
 
 V 0.9
-Code Complete / Levels Complete / Currently in Beta
+Code Complete / Levels Complete / Currently in Beta<br/>
 
 V 1.0
-Beta Testing
+Beta Testing<br/>
 
 v 1.1
-Added Underground screens for levels 1,2, and 4.
-Added Light changing for Bean on those levels.
-Fixed Fatal Bug where initial Form of Bean caused the game to crash warping to Level 3
-Added Title For Bean
+Added Underground screens for levels 1,2, and 4.<br/>
+Added Light changing for Bean on those levels.<br/>
+Fixed Fatal Bug where initial Form of Bean caused the game to crash warping to Level 3<br/>
+Added Title For Bean<br/>
 
 v 1.2 (Future)
-Add High Scroe Table (Keep Track of High Score)
-Rework Minion's on levels
+Add High Scroe Table (Keep Track of High Score)<br/>
+Rework Minion's on levels<br/>
 
