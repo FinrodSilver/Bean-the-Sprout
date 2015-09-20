@@ -1,7 +1,7 @@
 # Bean-the-Sprout
 Game Maker Game for final project at SNHU Masters Class
 
-#Change Log
+#Change Log<br/>
 V0.1:<br/>
 Initial Design and prototype phase<br/>
 
@@ -55,7 +55,7 @@ Added Light changing for Bean on those levels.<br/>
 Fixed Fatal Bug where initial Form of Bean caused the game to crash warping to Level 3<br/>
 Added Title For Bean<br/>
 
-v 1.2 (Future)
+v 1.2 
 Add High Scroe Table (Keep Track of High Score)<br/>
-Rework Minion's on levels<br/>
-
+Added Spawning of swarms and pickup items<br/>
+Added platforms on some leves and moved exit for level 4<br/>
