@@ -56,6 +56,6 @@ Fixed Fatal Bug where initial Form of Bean caused the game to crash warping to L
 Added Title For Bean<br/>
 
 v 1.2 <br/>
-Add High Scroe Table (Keep Track of High Score)<br/>
+Add High Score Table (Keep Track of High Score)<br/>
 Added Spawning of swarms and pickup items<br/>
 Added platforms on some leves and moved exit for level 4<br/>
