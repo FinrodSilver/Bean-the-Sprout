@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-999999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -75,11 +75,11 @@ audio_sound_gain(snd_brightAmbient, 1, 2000);
           </argument>
           <argument>
             <kind>4</kind>
-            <string>1</string>
+            <string>4</string>
           </argument>
           <argument>
             <kind>4</kind>
-            <string>1</string>
+            <string>0</string>
           </argument>
         </arguments>
       </action>

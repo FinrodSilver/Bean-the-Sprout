@@ -110,19 +110,20 @@
       <sprite>sprites\spr_ground22</sprite>
       <sprite>sprites\spr_ground24</sprite>
     </sprites>
-    <sprites name="MenuButtons">
+    <sprites name="Buttons">
       <sprite>sprites\spr_startGame</sprite>
       <sprite>sprites\spr_endGame</sprite>
       <sprite>sprites\spr_helpGame</sprite>
+      <sprite>sprites\spr_youWin</sprite>
+      <sprite>sprites\spr_gameOver</sprite>
+      <sprite>sprites\spr_continueClick</sprite>
+      <sprite>sprites\spr_Title</sprite>
     </sprites>
     <sprite>sprites\spr_finish</sprite>
     <sprite>sprites\spr_monsterStop</sprite>
     <sprite>sprites\spr_invis</sprite>
+    <sprite>sprites\spr_beanCollision</sprite>
     <sprite>sprites\spr_floor</sprite>
-    <sprite>sprites\spr_gameOver</sprite>
-    <sprite>sprites\spr_continueClick</sprite>
-    <sprite>sprites\spr_youWin</sprite>
-    <sprite>sprites\spr_Title</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_mainMenu</background>
@@ -136,6 +137,9 @@
     <script>scripts\scr_move.gml</script>
     <script>scripts\scr_push.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_cartoon</font>
+  </fonts>
   <objects name="objects">
     <objects name="Ant Minions">
       <object>objects\obj_small_swarm</object>
@@ -150,6 +154,8 @@
       <object>objects\obj_healthUp</object>
       <object>objects\obj_powerUp</object>
       <object>objects\obj_extraLife</object>
+      <object>objects\obj_powerUpSpawn</object>
+      <object>objects\obj_healthPowerUpSpawn</object>
     </objects>
     <objects name="Boulders">
       <object>objects\obj_boulder1</object>
@@ -165,6 +171,7 @@
       <object>objects\obj_bean3rd</object>
     </objects>
     <objects name="Tiles">
+      <object>objects\obj_ground25</object>
       <object>objects\obj_ground1</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_ground2</object>
